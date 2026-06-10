@@ -14,10 +14,10 @@ Health Hub is a health and wellness web application designed to help users explo
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript
-- Node.js
+- Frontend: `HTML5`, `CSS3`, `JavaScript`
+- Backend: `Node.js`, `Express.js`
+- Database: `MongoDB`, `Mongoose`
+- Tools: `Git`, `GitHub`, `VS Code`
 
 ## Project Structure
 
