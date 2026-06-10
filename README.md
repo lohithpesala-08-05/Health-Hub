@@ -26,14 +26,20 @@ package.json – Project configuration
 ## Screenshots
 
 ### Home Page
-![Home Page](screenshots/home-page.png)
+![Home Page](screenshots/01-home-page.png)
 
-### Fitness Page
-![Fitness Page](screenshots/fitness-page.png)
+### Monitoring Page
+![Monitoring Page](screenshots/02-monitoring-page.png)
 
-### Nutrition Page
-![Nutrition Page](screenshots/nutrition-page.png)
+### BMI Calculator
+![BMI Calculator](screenshots/03-BMI-page.png)
 
-### Health Monitoring Page
-![Health Monitoring Page](screenshots/monitoring-page.png)
+### Water Intake Monitor
+![Water Intake Monitor](screenshots/04-water-intake-page.png)
+
+### Sleep Tracker
+![Sleep Tracker](screenshots/05-sleep-page.png)
+
+### Exercise Page
+![Exercise Page](screenshots/06-exercise-page.png)
 
