@@ -21,7 +21,7 @@ Health Hub is a health and wellness web application designed to help users explo
 
 ## Project Structure
 
-- `data/` – Stores project data
+
 - `images/` – Contains website images
 - `src/` – Source files
 - HTML files for website pages
