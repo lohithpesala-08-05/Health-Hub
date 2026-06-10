@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sleep Tracker</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url(images/sleep1.jpg);
+            background-size: cover;
+            padding: 88px 16px 16px;
+            box-sizing: border-box;
+        }
+
+        .feature-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            padding: 14px 18px;
+            background: rgba(21, 35, 45, 0.9);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 14px;
+        }
+
+        .feature-nav a:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        #output-container {
+            border: 2px solid black;
+            padding: 20px;
+            text-align: center;
+            
+        }
+    </style>
+    <script>
+        function analyzeSleep() {
+            var hoursSlept = parseFloat(document.getElementById("hoursSlept").value);
+            
+            var recommendedMinHours = 7;
+            var recommendedMaxHours = 9;
+            
+            var difference = 0;
+            if (hoursSlept < recommendedMinHours) {
+                difference = recommendedMinHours - hoursSlept;
+                document.getElementById("recommendation").innerText = "You should increase your sleep time by " + difference.toFixed(1) + " hours.";
+            } else if (hoursSlept > recommendedMaxHours) {
+                difference = hoursSlept - recommendedMaxHours;
+                document.getElementById("recommendation").innerText = "You should decrease your sleep time by " + difference.toFixed(1) + " hours.";
+            } else {
+                document.getElementById("recommendation").innerText = "Your sleep duration is within the recommended range.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="feature-nav">
+        <a href="/home">Home</a>
+        <a href="/monitoring">Monitoring</a>
+        <a href="/bmi">BMI</a>
+        <a href="/waterinmo">Water Intake</a>
+        <a href="/sleept">Sleep</a>
+        <a href="/yoga">Yoga</a>
+        <a href="/exercise">Exercise</a>
+        <a href="/meditation">Meditation</a>
+        <a href="/food">Food</a>
+        <a href="/mentalc">Mental Care</a>
+        <a href="/day">Day Tracker</a>
+    </nav>
+    <div class="container">
+        <div id="output-container">
+            <b>
+            <h2>Sleep Tracker</h2>
+            <p>Enter the number of hours slept per day:</p>
+            <input type="number" id="hoursSlept" step="0.5" placeholder="e.g., 7.5"><br><br>
+            <button onclick="analyzeSleep()">Analyze</button>
+            <p id="recommendation"></p>
+            </b>
+        </div>
+    </div>
+</body>
+</html>

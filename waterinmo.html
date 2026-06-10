@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Water Intake Monitor</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url(images/wim1.png);
+            padding: 88px 16px 16px;
+            box-sizing: border-box;
+        }
+
+        .feature-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            padding: 14px 18px;
+            background: rgba(21, 35, 45, 0.9);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 14px;
+        }
+
+        .feature-nav a:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        #output-container {
+            border: 2px solid black;
+            padding: 20px;
+           background-image: url(images/wimc1.jpg);
+           
+        }
+    </style>
+    <script>
+        function calculateWaterIntake() {
+           
+            var weightKg = parseFloat(document.getElementById("weight").value);
+            
+            
+            var waterIntakeLiters = parseFloat(document.getElementById("waterIntake").value);
+            
+            
+            var recommendedIntakeMl = weightKg * 33; 
+            var recommendedIntakeLiters = recommendedIntakeMl / 1000;
+            
+            var difference = recommendedIntakeLiters - waterIntakeLiters;
+            
+            if (difference > 0) {
+                document.getElementById("result").innerText = "You should increase your water intake by " + difference.toFixed(2) + " liters.";
+            } else if (difference < 0) {
+                document.getElementById("result").innerText = "You should decrease your water intake by " + Math.abs(difference).toFixed(2) + " liters.";
+            } else {
+                document.getElementById("result").innerText = "You are drinking the recommended amount of water.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="feature-nav">
+        <a href="/home">Home</a>
+        <a href="/monitoring">Monitoring</a>
+        <a href="/bmi">BMI</a>
+        <a href="/waterinmo">Water Intake</a>
+        <a href="/sleept">Sleep</a>
+        <a href="/yoga">Yoga</a>
+        <a href="/exercise">Exercise</a>
+        <a href="/meditation">Meditation</a>
+        <a href="/food">Food</a>
+        <a href="/mentalc">Mental Care</a>
+        <a href="/day">Day Tracker</a>
+    </nav>
+    <div class="container">
+        <div id="output-container">
+            <h2>Water Intake Monitor</h2>
+            <p>Enter your weight in kilograms:</p>
+            <input type="number" id="weight" step="any"><br><br>
+            <p>Enter your water intake in liters:</p>
+            <input type="number" id="waterIntake" step="any"><br><br>
+            <button onclick="calculateWaterIntake() " class="btn btn-primary">Calculate</button>
+            <p id="result"></p>
+        </div>
+    </div>
+</body>
+</html>

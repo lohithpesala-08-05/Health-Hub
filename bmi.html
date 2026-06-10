@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 88px 16px 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        box-sizing: border-box;
+        background-image: url("images/bmi1.jpg");
+        background-size: cover;
+      }
+
+      .feature-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        padding: 14px 18px;
+        background: rgba(21, 35, 45, 0.9);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      }
+
+      .feature-nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        font-size: 14px;
+      }
+
+      .feature-nav a:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      .container {
+        width: 300px;
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #ddd;
+      }
+
+      .container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      table th,
+      table td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      #weightinput {
+        font-size: large;
+        font-weight: bold;
+        border-width: 0;
+      }
+      #heightinput {
+        font-size: large;
+        font-weight: bold;
+        border-width: 0;
+      }
+      input[type="number"] {
+        width: calc(100% - 16px);
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      #result {
+        margin-top: 16px;
+        padding: 12px;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+      }
+
+      #result p {
+        margin: 6px 0;
+      }
+
+      #result ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="feature-nav">
+      <a href="/home">Home</a>
+      <a href="/monitoring">Monitoring</a>
+      <a href="/bmi">BMI</a>
+      <a href="/waterinmo">Water Intake</a>
+      <a href="/sleept">Sleep</a>
+      <a href="/yoga">Yoga</a>
+      <a href="/exercise">Exercise</a>
+      <a href="/meditation">Meditation</a>
+      <a href="/food">Food</a>
+      <a href="/mentalc">Mental Care</a>
+      <a href="/day">Day Tracker</a>
+    </nav>
+    <div class="container">
+      <h2>BMI Calculator</h2>
+      <table>
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td>
+            <select for="weight" id="weightinput">
+              <option id="kg">Weight (kg):</option>
+              <option id="g">Weight (g):</option>
+              <option id="pound">Weight (lb):</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" id="weight" placeholder="Enter your weight" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select for="height" id="heightinput">
+              <option>Height (m):</option>
+              <option>Height (cm):</option>
+              <option>Height (inch):</option>
+              <option>Height (feet):</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" id="height" placeholder="Enter your height" />
+          </td>
+        </tr>
+      </table>
+      <button onclick="calculateBMI()">Calculate BMI</button>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function getImprovementTips(category) {
+        if (category === "Underweight") {
+          return [
+            "Increase nutrient-dense calories with foods like nuts, dairy, eggs, and rice.",
+            "Add strength training to build healthy muscle mass.",
+            "Eat regular meals and snacks instead of skipping meals.",
+          ];
+        }
+
+        if (category === "Normal weight") {
+          return [
+            "Maintain your routine with balanced meals, sleep, and regular activity.",
+            "Aim for at least 30 minutes of exercise most days of the week.",
+            "Keep tracking your weight and energy levels to stay consistent.",
+          ];
+        }
+
+        if (category === "Overweight") {
+          return [
+            "Reduce sugary drinks and highly processed snacks.",
+            "Increase daily movement with walking, cycling, or simple workouts.",
+            "Focus on portion control and include more vegetables and protein.",
+          ];
+        }
+
+        return [
+          "Start with small, steady changes to eating habits and daily movement.",
+          "Choose high-fiber meals, lean protein, and reduce excess sugar and fried foods.",
+          "Consider speaking with a doctor or dietitian for a personalized health plan.",
+        ];
+      }
+
+      function calculateBMI() {
+        var heightInput = document.getElementById("height");
+        var weightInput = document.getElementById("weight");
+        let selectedElement = document.getElementById("weightinput");
+        let selectedheight = document.getElementById("heightinput");
+        var resultDiv = document.getElementById("result");
+
+        var weight = parseFloat(weightInput.value);
+        var height = parseFloat(heightInput.value);
+
+        let selectedIndex = selectedElement.selectedIndex;
+        if (selectedIndex === 1) {
+          weight = weight / 1000;
+        } else if (selectedIndex === 2) {
+          weight = weight * 0.453592;
+        }
+
+        let selectedheightIndex = selectedheight.selectedIndex;
+        if (selectedheightIndex == 1) {
+          height = height / 100;
+        } else if (selectedheightIndex == 2) {
+          height = height * 0.0254;
+        } else if (selectedheightIndex == 3) {
+          height = height * 0.305;
+        }
+
+        if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+          resultDiv.textContent = "Please enter valid weight and height.";
+          return;
+        }
+
+        var bmi = weight / (height * height);
+
+        var bmiCategory;
+        let color = "";
+        if (bmi < 18.5) {
+          bmiCategory = "Underweight";
+          color = "#ffc107";
+        } else if (bmi < 25) {
+          bmiCategory = "Normal weight";
+          color = "#28a745";
+        } else if (bmi < 30) {
+          bmiCategory = "Overweight";
+          color = "#fd7e14";
+        } else {
+          bmiCategory = "Obese";
+          color = "#dc3545";
+        }
+
+        var improvementTips = getImprovementTips(bmiCategory);
+        resultDiv.style.color = color;
+        resultDiv.innerHTML =
+          "<p>Your BMI is: " +
+          bmi.toFixed(2) +
+          "</p><p>BMI Category: " +
+          bmiCategory +
+          "</p><p>Suggested improvements:</p><ul><li>" +
+          improvementTips.join("</li><li>") +
+          "</li></ul>";
+      }
+    </script>
+  </body>
+</html>

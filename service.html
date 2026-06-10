@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>health based services</title>
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+background:#D8BFD8  ;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .recommendation {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .recommendation h2 {
+            margin-top: 0;
+        }
+
+        .recommendation p {
+            margin-bottom: 10px;
+        }
+        .recommendation img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            padding: 4px 8px;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+        .services {
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+        .services label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .services input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .services button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        img{
+            width: 200px;
+            height:200px;
+        }
+        a{
+            margin-left: 70%;
+        }
+</style>
+</head>
+<body>
+<header>
+<h1> Health Hub:Personalized Wellness Management</h1>
+</header>
+<div class="container">
+<div class="services">
+<h2>Find service of your choice</h2>
+<form id="services" action="#">
+<label for="service_type">Enter your service type:</label>
+<input type="text" id="service_type" name="service_type" placeholder="e.g.,fitness,personal care,monitoring etc." required>
+<button type="submit">Find service</button>
+</form>
+</div>
+<div class="recommendation">
+<h2>BMI</h2>
+<p>Body Mass Index (BMI) is a person's weight in kilograms divided by the square of height in meters.A high BMI can indicate high body fatness.</p>
+<img src="images/bmi.jpg" alt="Bmi">
+<a href="bmi.html">
+    <button class="btn btn-dark text-light">Know More</button></a></div>
+<div class="recommendation">
+<h2>Yoga</h2>
+<p>The practice of yoga asanas develops strength and flexibility, while soothing your nerves and calming your mind. The asanas affect the muscles, joints and skin, and the whole body – glands, nerves, internal organs, bones, respiration and the brain. The physical building blocks of yoga are the posture and the breath.</p>
+</p>
+<img src="images/yoga.webp" alt="yoga">
+<a href="yoga.html">
+    <button class="btn btn-dark text-light">Know More</button></a></div>
+<div class="recommendation">
+<h2>Meditation</h2>
+<p>Meditation is a practice that involves focusing or clearing your mind using a combination of mental and physical techniques. Depending on the type of meditation you choose, you can meditate to relax, reduce anxiety and stress, and more.</p>                       
+</p>
+<img src="images/medit1.jpg" alt="meditation">
+<a href="meditation.html">
+    <button class="btn btn-dark text-light">Know More</button></a></div>
+</div>
+
+
+</div>
+<script>
+        document.getElementById("services").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var service = document.getElementById("service_type").value.toLowerCase();
+            if (service === "fitness") {
+                window.location.href = "fitness.html";
+            } else if (service === "personal care") {
+                window.location.href = "personalcare.html";
+            } 
+            else if (service === "monitoring") {
+                window.location.href = "monitoring.html";
+            } 
+            else {
+                alert("Sorry, we currently do not have specific recommendations for this health condition.");
+            }
+        });
+</script>
+</body>
+</html>
